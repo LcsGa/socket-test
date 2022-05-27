@@ -14,14 +14,12 @@ const hex = () =>
     .join('');
 const getRandomColor = () => `#${hex()}${hex()}${hex()}`;
 
-socket.on('connect', () => {
-  console.log('Connected');
+const switchSquareColor = (color) => (square.style.background = color);
 
-  square.addEventListener('click', () => {
-    const color = getRandomColor();
-    square.style.background = color;
-    socket.emit('color', color);
-  });
+square.addEventListener('click', () => {
+  const color = getRandomColor();
+  switchSquareColor(color);
+  socket.emit('color', color);
 });
 
-socket.on('switchColor', (color) => (square.style.background = color));
+socket.on('switchColor', switchSquareColor);
