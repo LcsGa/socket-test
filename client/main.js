@@ -2,7 +2,7 @@ import { io } from 'https://cdn.socket.io/4.4.1/socket.io.esm.min.js';
 
 const square = document.querySelector('.square');
 
-const socket = io('http://localhost:3000');
+const socket = io('ws://localhost:3000');
 
 const byteVal = () => Math.floor(Math.random() * 256);
 const getRandomColor = () => `rgb(${byteVal()}, ${byteVal()}, ${byteVal()})`;
