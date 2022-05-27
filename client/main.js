@@ -4,15 +4,8 @@ const square = document.querySelector('.square');
 
 const socket = io('http://localhost:3000');
 
-const hex = () =>
-  Math.floor(Math.random() * 256)
-    .toString(16)
-    .split('')
-    .reduceRight((acc, curr) => acc.replace('0', curr), '00')
-    .split('')
-    .reverse()
-    .join('');
-const getRandomColor = () => `#${hex()}${hex()}${hex()}`;
+const byteVal = () => Math.floor(Math.random() * 256);
+const getRandomColor = () => `rgb(${byteVal()}, ${byteVal()}, ${byteVal()})`;
 
 const switchSquareColor = (color) => (square.style.background = color);
 
